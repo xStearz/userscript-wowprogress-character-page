@@ -14,6 +14,7 @@ export enum Tiers {
     T22 = 'T22',
     T23 = 'T23',
     T24 = 'T24',
+    T26 = 'T26',
 }
 
 export function getTierName(tier: Tiers): string {
@@ -23,6 +24,7 @@ export function getTierName(tier: Tiers): string {
         case Tiers.T22: return 'Cruicible of Storms'
         case Tiers.T23: return 'Eternal Palance'
         case Tiers.T24: return 'Nyalotha'
+        case Tiers.T26: return 'Castle Nathria'
         default: {
             throw new Error(`Unknown tier:${tier}`)
         }
@@ -30,7 +32,7 @@ export function getTierName(tier: Tiers): string {
 }
 
 export const CurrentTiers: Array<Tiers> = [
-    Tiers.T24,
+    Tiers.T26,
 ]
 
 // ----------------------------------------------------------------------------
