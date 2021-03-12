@@ -55,6 +55,26 @@
         <div v-if="!loading && rankings">
             <div class="btn-group">
                 <a
+                    :class="`btn ${difficultyFilter === Difficulty.Mythic ? 'active' : ''}`"
+                    @click="difficultyFilter = Difficulty.Mythic"
+                >
+                    Mythic
+                </a>
+                <a
+                    :class="`btn ${difficultyFilter === Difficulty.Heroic ? 'active' : ''}`"
+                    @click="difficultyFilter = Difficulty.Heroic"
+                >
+                    Heroic
+                </a>
+                <a
+                    :class="`btn ${difficultyFilter === Difficulty.Normal ? 'active' : ''}`"
+                    @click="difficultyFilter = Difficulty.Normal"
+                >
+                    Normal
+                </a>
+            </div>
+            <div class="btn-group">
+                <a
                     :class="`btn ${metricFilter === Metrics.DPS ? 'active' : ''}`"
                     @click="metricFilter = Metrics.DPS"
                 >
@@ -103,7 +123,7 @@ import Component from 'vue-class-component'
 import { Prop, Watch } from 'vue-property-decorator'
 import Vue from 'vue'
 
-import { Classes, CurrentTiers, Metrics, Regions, Specs, Tiers } from '../Constants'
+import { Classes, CurrentTiers, Difficulty, Metrics, Regions, Specs, Tiers } from '../Constants'
 import WarcraftLogs, { ICharacterRankings } from '@models/WarcraftLogs'
 
 import Loader from './Loader.vue'
@@ -121,12 +141,14 @@ export default class WarcraftLogsContainer extends Vue {
     @Prop({ type: String, required: true }) readonly name!: string
 
     Metrics = Metrics
+    Difficulty = Difficulty
     Classes = Classes
     Specs = Specs
 
     client = new WarcraftLogs()
 
     metricFilter: Metrics = Metrics.Default
+    difficultyFilter: Difficulty = Difficulty.Mythic
     specFilter: string = ''
     rankings: ICharacterRankings | null = null
     loading = false
@@ -167,6 +189,7 @@ export default class WarcraftLogsContainer extends Vue {
             this.rankings = await this.client.fetchInfo(this.region, this.realm, this.name, {
                 metric: this.metricFilter,
                 specName: this.specFilter,
+                difficulty: this.difficultyFilter,
             })
 
             if (!this.rankings) {
@@ -185,6 +208,15 @@ export default class WarcraftLogsContainer extends Vue {
     @Watch('client.accessToken')
     async onAccessTokenChange(accessToken: string): Promise<void> {
         if (!accessToken) {
+            return
+        }
+
+        await this.fetch()
+    }
+
+    @Watch('difficultyFilter')
+    async onChangeDifficulty(difficulty: Difficulty, oldDifficulty: Difficulty): Promise<void> {
+        if (difficulty === oldDifficulty) {
             return
         }
 

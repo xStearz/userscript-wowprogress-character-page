@@ -3,6 +3,7 @@ import { Metrics, Regions } from '@Constants'
 export interface IOptionalFilters {
     metric?: Metrics,
     specName?: string,
+    difficulty?: number,
 }
 
 export default interface IDataSource {

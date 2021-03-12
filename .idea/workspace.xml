@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1bad548-94e5-496d-81b6-1fc1f4fe0682" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WarcraftLogsContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WarcraftLogsContainer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/IDataSource.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/IDataSource.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/WarcraftLogs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/WarcraftLogs.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +43,8 @@
       <option name="presentableId" value="Default" />
       <updated>1615571200004</updated>
       <workItem from="1615571201167" duration="959000" />
-      <workItem from="1615573021687" duration="1375000" />
+      <workItem from="1615573021687" duration="2233000" />
+      <workItem from="1615576515984" duration="2533000" />
     </task>
     <servers />
   </component>

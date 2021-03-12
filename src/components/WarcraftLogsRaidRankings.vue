@@ -148,7 +148,7 @@ export default class WarcraftLogsRaidRankings extends Vue {
             }
         }
 
-        return `${numBossesKilled}/${numBosses}M`
+        return `${numBossesKilled}/${numBosses}`
     }
 
     formatPercent(val: number): string {

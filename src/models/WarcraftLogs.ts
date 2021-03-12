@@ -1,4 +1,4 @@
-import { CurrentTiers, Difficulty, Metrics, Regions, Tiers } from '@Constants'
+import { CurrentTiers, Metrics, Regions, Tiers } from '@Constants'
 import IDataSource, { IOptionalFilters } from './IDataSource'
 
 // ----------------------------------------------------------------------------
@@ -147,13 +147,16 @@ export default class WarcraftLogs implements IDataSource {
             if (matches) {
                 const zoneID = parseInt(matches[1])
                 zoneRankingQueryString += `${zoneKey}: zoneRankings(`
-                zoneRankingQueryString += `zoneID: ${zoneID}, difficulty: ${Difficulty.Mythic}, partition: -1`
+                zoneRankingQueryString += `zoneID: ${zoneID}, partition: -1`
 
                 if (optionalFilters?.metric) {
                     zoneRankingQueryString += `, metric:${optionalFilters.metric}`
                 }
                 if (optionalFilters?.specName) {
                     zoneRankingQueryString += `, specName:"${optionalFilters.specName}"`
+                }
+                if (optionalFilters?.difficulty) {
+                    zoneRankingQueryString += `, difficulty: ${optionalFilters?.difficulty}`
                 }
 
                 zoneRankingQueryString += ')'
